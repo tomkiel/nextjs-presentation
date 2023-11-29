@@ -1,0 +1,17 @@
+version: '3'
+
+services:
+  nextjs-tutorial-db:
+    env_file:
+      - ../../.env
+    image: postgres:16-alpine
+    container_name: nextjs-tutorial-db
+    environment:
+      POSTGRES_CONFIG_FILE: ./conf/postgresql.conf
+    ports:
+      - "5432:5432"
+    volumes:
+      - nextjs_tutorial_db_data:/var/lib/postgresql/data
+
+volumes:
+  nextjs_tutorial_db_data:

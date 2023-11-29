@@ -1,0 +1,18 @@
+.hero {
+  position: relative;
+
+  .hero-image {
+    width: 100%;
+    object-fit: cover;
+    object-position: center;
+  }
+
+  .hero-content {
+    position: absolute;
+    top: 25%;
+    left: 5%;
+    background-color: var(--white);
+    padding: 2rem;
+    width: 30rem;
+  }
+}

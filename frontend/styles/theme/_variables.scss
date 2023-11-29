@@ -1,0 +1,14 @@
+* {
+  --top-header-height: 40px;
+  --main-header: 70px;
+  --header-height: 70px;
+  --font-body-scale: 1.0;
+  --responsive-container-padding: 0 calc((100% - 1200px) / 2);
+
+  @media all and (max-width: 1250px) {
+    --responsive-container-padding: 0 20px;
+  }
+  @media all and (max-width: 600px) {
+    --responsive-container-padding: 0 10px;
+  }
+}

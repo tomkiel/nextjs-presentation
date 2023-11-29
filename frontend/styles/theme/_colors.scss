@@ -1,0 +1,30 @@
+$brand: #273d7f;
+
+$theme-colors: (
+    "light":      #d8d7d8,
+    "dark":       #160c23,
+    "primary":    #4d337d,
+    "secondary":  #9c57d6,
+    "info":       #df7e9c,
+    "accent1":    #60406b,
+    "accent2":    #8165bf,
+    "accent3":    #a49bb2,
+    "success":    #30a369,
+    "warning":    #dfcc30,
+    "danger":     #ea2e1a,
+);
+
+//Colors
+* {
+    --primary-color: #273d7f;
+    --white: #FFFFFF;
+    --top-header: #262626;
+    --danger: #ea2e1a;
+    --light: #d8d7d8;
+
+    //light
+    --light-border: #e5e5e5;
+    --anchor-color: #222222;
+    --anchor-hover-color: #666666;
+
+}

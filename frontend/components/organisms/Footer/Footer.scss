@@ -1,0 +1,37 @@
+.app-footer {
+  display: flex;
+  justify-content: space-around;
+  padding: 20px;
+  background-color: #333;
+  color: #fff;
+
+  .footer-column {
+    flex: 1;
+    margin-right: 20px;
+
+    h3 {
+      font-size: 1.2em;
+      margin-bottom: 10px;
+      color: var(--white);
+    }
+
+    ul {
+      list-style-type: none;
+      padding: 0;
+
+      li {
+        margin-bottom: 5px;
+
+        a {
+          color: #fff;
+          text-decoration: none;
+          transition: color 0.3s ease;
+
+          &:hover {
+            color: #007bff;
+          }
+        }
+      }
+    }
+  }
+}

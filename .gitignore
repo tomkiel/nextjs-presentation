@@ -1,0 +1,10 @@
+.venv
+node_modules
+__pycache__
+.env
+build
+.pytest_cache
+.DS_Store
+.next/
+.swc/
+out

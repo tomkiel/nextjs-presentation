@@ -1,0 +1,61 @@
+.app-header {
+  height: var(--header-height);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+  position: sticky;
+  padding: var(--responsive-container-padding);
+
+  .header-container {
+    width: 100%;
+    height: 100%;
+    display: grid;
+    grid-template-areas: "heading navigation icons";
+    grid-template-columns: auto 1fr auto;
+    column-gap: 2rem;
+    text-align: center;
+
+    .header-logo {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .header-icons {
+      display: flex;
+      grid-area: icons;
+      justify-self: end;
+      align-items: center;
+      gap: 1rem;
+      padding: 0 0.8rem;
+
+      .shopping-cart,
+      .shopping-wish {
+        position: relative;
+
+        .bag-count,
+        .wish-count {
+          position: absolute;
+          top: -0.5rem;
+          background-color: #222222;
+          width: 1.5rem;
+          height: 1.5rem;
+          border-radius: 100%;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          font-size: 1rem;
+          right: auto;
+          left: 1rem;
+
+          span {
+            color: var(--white);
+          }
+        }
+      }
+
+      svg {
+        width: 2rem;
+        height: 2rem;
+      }
+    }
+  }
+}

@@ -1,0 +1,27 @@
+.category-card {
+  background-color: #fff;
+  transition: background-color 0.3s ease;
+
+  &:hover {
+    background-color: #000;
+  }
+
+  .card-heading {
+    display: block;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    text-decoration: none;
+    color: #000;
+    transition: color 0.3s ease;
+
+    &:hover {
+      color: #fff;
+    }
+
+    .card-image {
+      width: 100%;
+      height: auto;
+      margin-bottom: 0.5rem;
+    }
+  }
+}
