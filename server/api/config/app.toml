@@ -1,4 +1,0 @@
-EXTENSIONS = [
-  "vendors.database:init_app",
-  "http.routes.product_routes:init_app"
-]

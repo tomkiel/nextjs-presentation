@@ -1,14 +1,12 @@
 .product-card {
   position: relative;
-  width: 210px;
   border: 1px solid #ddd;
-  border-radius: 8px;
+  border-radius: 2px;
   overflow: hidden;
-  margin-bottom: 20px;
 
   .card-wrapper {
     display: grid;
-    grid-template-rows: 290px auto;
+    grid-template-rows: 35rem auto;
   }
 
   .card-media {
@@ -32,6 +30,9 @@
   }
 
   .card-content {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
     padding: 0.5rem;
 
     .card-title {
@@ -58,6 +59,6 @@
 
   &.sold-out {
     filter: grayscale(100%);
-    display: none;
+    //display: none;
   }
 }

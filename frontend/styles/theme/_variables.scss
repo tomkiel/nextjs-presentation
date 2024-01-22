@@ -3,12 +3,44 @@
   --main-header: 70px;
   --header-height: 70px;
   --font-body-scale: 1.0;
-  --responsive-container-padding: 0 calc((100% - 1200px) / 2);
+  --responsive-container-padding: 0 calc((100% - 1700px) / 2);
 
-  @media all and (max-width: 1250px) {
+  @media all and (max-width: 1700px) {
     --responsive-container-padding: 0 20px;
   }
+
   @media all and (max-width: 600px) {
     --responsive-container-padding: 0 10px;
   }
+
+  //theme spacing
+  --th-padding: 1rem;
+  --th-padding-sm: 0.5rem;
+
+  //display flex and grid
+  --th-column-gap: 0.5rem;
+  --th-column-gap-sm: 0.25rem;
+  --th-column-gap-xl: 1rem;
+  --th-column-gap-xxl: 2rem;
+
+  //theme border
+  --th-border-color: var(--color-light-contrast);
+  --th-border: 1px solid var(--color-light-contrast);
+  --th-border-radius: 0.5rem;
+  --th-box-shadow: 0 10px 15px -3px var(--color-light-contrast),
+  0 4px 6px -4px var(--color-light-contrast);
+
+  //font size
+  --th-font-size-sm: 0.85rem;
+  --th-font-size-xl: 1.3rem;
+
+   //font weight
+   --th-font-weight-bold: 500;
+  
+
+  //components
+  --app-header-height: 5rem;
+
+  //transitions
+  --th-transition-all: all .2s ease-out;
 }

@@ -1,0 +1,12 @@
+version: '3.8'
+
+services:
+  nextjs-tutorial-backend:
+    env_file:
+      - ../../.env
+    build:
+      context: ../../
+      dockerfile: ./docker/backend/Dockerfile
+    container_name: nextjs-tutorial-backend
+    ports:
+      - "5000:80"

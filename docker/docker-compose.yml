@@ -1,0 +1,26 @@
+version: "3.1"
+
+services:
+  nextjs-tutorial-database:
+    extends:
+      file: ./database/docker-compose.yml
+      service: nextjs-tutorial-database
+    container_name: nextjs-tutorial-database
+  nextjs-tutorial-backend:
+    extends:
+      file: ./backend/docker-compose.yml
+      service: nextjs-tutorial-backend
+    container_name: nextjs-tutorial-backend
+  nextjs-tutorial-proxy:
+    extends:
+      file: ./nginx/docker-compose.yml
+      service: nextjs-tutorial-nginx
+    container_name: nextjs-tutorial-proxy
+
+volumes:
+  nextjs_tutorial_db_data:
+
+
+networks:
+  nextjs-tutorial-network:
+    driver: bridge

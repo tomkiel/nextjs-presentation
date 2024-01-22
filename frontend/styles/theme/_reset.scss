@@ -22,12 +22,16 @@ html {
 }
 
 body {
-  font-size: 1rem;
+  font-size: 14px;
   letter-spacing: 0.05rem;
-  line-height: calc(1.8 / var(--font-body-scale));
   font-family: "Noto Sans", Helvetica, Arial, sans-serif;
   -ms-text-size-adjust: 100%;
   -webkit-text-size-adjust: 100%;
   -moz-osx-font-smoothing: grayscale;
   box-sizing: border-box;
+}
+
+svg {
+  width: 1rem;
+  height: 1rem;
 }

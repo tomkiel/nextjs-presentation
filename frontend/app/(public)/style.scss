@@ -5,3 +5,24 @@
   min-height: 100%;
   margin: 0;
 }
+
+.home-page {
+  .products-categories {
+    padding: 2rem;
+    display: flex;
+    justify-content: center;
+  }
+
+  .products {
+    padding: var(--responsive-container-padding);
+
+    .content-header {
+      padding: 2rem;
+      padding-left: 0;
+
+      h2 {
+        font-size: 2rem;
+      }
+    }
+  }
+}

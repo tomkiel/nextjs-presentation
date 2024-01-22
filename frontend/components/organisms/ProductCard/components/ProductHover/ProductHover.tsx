@@ -6,12 +6,12 @@ import "./ProductHover.scss";
 export function ProductHover() {
   return (
     <Wrapper className="product-hover">
-      <Anchor className="product-hover-item" href="#" title="Whishlist">
+      <div className="product-hover-item" title="Whishlist">
         <IconHeart />
-      </Anchor>
-      <Anchor className="product-hover-item" href="#" title="Quick Add">
+      </div>
+      <div className="product-hover-item" title="Quick Add">
         <IconShoppingBag />
-      </Anchor>
+      </div>
     </Wrapper>
   )
 }

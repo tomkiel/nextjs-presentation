@@ -1,0 +1,17 @@
+.header-main-menu {
+  height: var(--app-header-height);
+  .navigation-menu {
+    height: inherit;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    li {
+      height: inherit;
+      a {
+        font-size: var(--th-font-size-xl);
+        font-weight: var(--th-font-weight-bold);
+        padding: 0 var(--th-padding);
+      }
+    }
+  }
+}

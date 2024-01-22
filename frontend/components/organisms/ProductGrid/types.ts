@@ -1,10 +1,13 @@
 export interface ProductGridProps {
   products: {
-    imageUrl: string;
-    title: string;
+    id: string;
+    product_name: string;
     description: string;
+    is_promo: boolean;
+    promo_price: string;
+    categories: any;
     stars: number;
-    price: number;
+    price: string;
     soldOut?: boolean;
   }[];
 }

@@ -6,7 +6,7 @@ import { Wrapper } from "@components/organisms/Wrapper/Wrapper";
 import { IconChevronDown } from "@tabler/icons-react";
 import { DropdownProps } from "./types";
 import "./Dropdown.scss";
-import { Anchor, Button } from "@components/atoms";
+import { Button } from "@components/atoms";
 
 export function Dropdown(props: DropdownProps) {
   const { id, title, items } = props;

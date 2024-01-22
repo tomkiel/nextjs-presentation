@@ -1,26 +1,51 @@
 $brand: #273d7f;
 
 $theme-colors: (
-    "light":      #d8d7d8,
-    "dark":       #160c23,
-    "primary":    #4d337d,
-    "secondary":  #9c57d6,
-    "info":       #df7e9c,
-    "accent1":    #60406b,
-    "accent2":    #8165bf,
-    "accent3":    #a49bb2,
-    "success":    #30a369,
-    "warning":    #dfcc30,
-    "danger":     #ea2e1a,
+    "light": #d8d7d8,
+    "dark": #160c23,
+    "primary": #4d337d,
+    "secondary": #9c57d6,
+    "info": #df7e9c,
+    "accent1": #60406b,
+    "accent2": #8165bf,
+    "accent3": #a49bb2,
+    "success": #30a369,
+    "warning": #dfcc30,
+    "danger": #ea2e1a,
 );
 
 //Colors
 * {
-    --primary-color: #273d7f;
+    //theme colors
+    --color-white: #ffffff;
+    --color-info: #df7e9c;
+    --color-accent1: #60406b;
+    --color-accent2: #8165bf;
+    --color-accent3: #a49bb2;
+    --color-success: #30a369;
+    --color-warning: #dfcc30;
+    --color-danger: #ea2e1a;
+    --color-light: #d8d7d8;
+    --color-light-contrast: #dddddd;
+    --color-light-background: #f7f7f7;
+    --color-dark: #160c23;
+
+
+    //background
+    --th-background-color-dark: #262626;
+
+    //text
+    --th-text-color: #666666;
+    --th-text-accent-1: #ff0000;
+
+    //custom colors
+    --color-brand: #273d7f;
+    --primary-color: #4d337d;
+    --secondary-color: #9c57d6;
+
+    --primary-color: #4d337d;
     --white: #FFFFFF;
     --top-header: #262626;
-    --danger: #ea2e1a;
-    --light: #d8d7d8;
 
     //light
     --light-border: #e5e5e5;

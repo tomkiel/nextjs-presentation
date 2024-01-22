@@ -1,10 +1,10 @@
 export interface ProductCardProps {
   id?: string;
-  images: string;
   categories: string;
-  product_name: string;
-  promo_price: string;
+  productName: string;
+  description: string;
+  promoPrice: string;
   price: string;
-  is_promo: boolean;
+  isPromo: boolean;
   soldOut?: boolean;
 }

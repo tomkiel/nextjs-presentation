@@ -7,25 +7,29 @@ import { ProductHover, ProductImage, ProductSoldOut } from "./components";
 import "./ProductCard.scss";
 
 export function ProductCard(props: ProductCardProps) {
-  const { images, product_name, is_promo, price, promo_price, categories } = props;
+  const { productName, isPromo, price, promoPrice, categories, id, description } = props;
+  const images = {
+    "primary": `${process.env.API_URL}/static/images/products/${id}/primary.jpg`,
+    "alt": `${process.env.API_URL}/static/images/products/${id}/alt.jpg`
+  }
   return (
-    <Wrapper className={`product-card ${is_promo ? 'sold-out' : ''}`}>
+    <Wrapper className={`product-card ${isPromo ? 'sold-out' : ''}`}>
       <Anchor href="#">
         <Wrapper className="card-wrapper">
           <Wrapper className="card-media">
-            <ProductImage images={images} alt={product_name}/>
+            <ProductImage images={images} alt={productName} />
             <ProductHover />
           </Wrapper>
           <Wrapper className="card-content">
             <Heading level={2} className="card-title">
-              {product_name}
+              {productName}
             </Heading>
             <TextFormatter>
-              Example of description
+              {description}
             </TextFormatter>
             <div className="card-rating">Rating: 5 stars</div>
             <Wrapper className="card-price">
-              ${Number(price).toFixed(2)}
+              ${Number(price).toFixed(2)}{isPromo ? ` - $${Number(promoPrice).toFixed(2)}` : ""}
             </Wrapper>
           </Wrapper>
         </Wrapper>

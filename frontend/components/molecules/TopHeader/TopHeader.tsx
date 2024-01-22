@@ -12,13 +12,13 @@ export function TopHeader() {
   return (
     <Wrapper id="top-header" className="top-header">
       <Wrapper className="top-header-left">
-        <Anchor href="/">
+        <Anchor href="/" className="link">
           <IconMail />
           <TextFormatter>
             Support
           </TextFormatter>
         </Anchor>
-        <Anchor href="/">
+        <Anchor href="/" className="link">
           <IconWorld />
           <TextFormatter>
             Store Location
@@ -27,10 +27,10 @@ export function TopHeader() {
       </Wrapper>
       <Wrapper className="top-header-center">
         <TextFormatter>
-          Sale Up To 25% OFF
+          Sale Up To 15% OFF
         </TextFormatter>
         -
-        <Anchor href="">Shop Now</Anchor>
+        <Anchor href="" className="link">Shop Now</Anchor>
       </Wrapper>
       <Wrapper className="top-header-right">
         <Dropdown title="USD $" items={currencyOptions} />

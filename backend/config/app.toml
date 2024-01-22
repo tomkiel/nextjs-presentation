@@ -1,0 +1,6 @@
+EXTENSIONS = [
+  "vendors.database:init_app",
+  "endpoints.routes.product_routes:init_app",
+  "endpoints.routes.category_routes:init_app",
+  "endpoints.routes.common_routes:init_app",
+]

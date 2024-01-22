@@ -1,4 +1,4 @@
-QUART_APP := server/api/app:create_app
+QUART_APP := backend/app:create_app
 export QUART_APP
 
 virtualenv:
@@ -12,8 +12,14 @@ dev-dependencies:
 run-database:
 	@docker compose -f docker/database/docker-compose.yml up -d
 
-run-server:
+run-proxy:
+	@docker compose -f docker/nginx/docker-compose.yml up
+
+run-backend:
 	@.venv/bin/quart run
+
+run-hypercorn:
+	@.venv/bin/hypercorn -w 4 backend.wsgi:app
 
 run-frontend:
 	@npm --prefix frontend run dev

@@ -64,13 +64,16 @@ a[role="button"] {
 
 // Simple Link
 a {
+  height: inherit;
   text-decoration: none;
   color: var(--anchor-color);
+
   &.link {
     display: flex;
     justify-content: center;
     align-items: center;
   }
+
   &:hover {
     color: var(--anchor-hover-color);
   }

@@ -5,6 +5,7 @@ import { Wrapper } from "@components/organisms/Wrapper/Wrapper";
 import { IconHeart, IconSearch, IconShoppingBag, IconUser } from "@tabler/icons-react";
 
 import "./Header.scss";
+import { HeaderMainMenu } from "../HeaderMainMenu/HeaderMainMenu";
 
 export function Header() {
   return (
@@ -16,7 +17,7 @@ export function Header() {
           </Anchor>
         </Wrapper>
         <Wrapper className="header-navigation">
-
+          <HeaderMainMenu />
         </Wrapper>
         <Wrapper className="header-icons">
           <Wrapper className="main-search">
