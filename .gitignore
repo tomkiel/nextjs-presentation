@@ -8,3 +8,6 @@ build
 .next/
 .swc/
 out
+.env.production
+.env.local
+.env

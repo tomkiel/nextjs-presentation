@@ -1,73 +1,85 @@
-# Next.js Store
+# NEXTJS-PRESENTATION
 
-This repository contains a full-stack web application using Next.js for the frontend and Python with Quart for the backend. The project is set up to be easily run using a Makefile.
+This project is a web application built with **Quart**, a Python web framework, designed for managing products, categories, and related features. The backend is powered by **SQLAlchemy** for database interaction, **Flask Marshmallow** for serialization, and **Flask Caching** for optimized performance. The application is structured for scalability, using blueprints to organize different routes and controllers.
 
-## Prerequisites
+## Features
 
-Make sure you have the following installed on your machine:
+- **Product Management**: Handles product information such as name, price, promotional details, and category association.
+- **Category Management**: Allows retrieval of product categories, including featured categories.
+- **Cache Management**: Implements caching for better performance in repetitive requests.
+- **Database Support**: Uses **PostgreSQL** for data storage, with migrations handled by SQL scripts.
+- **API Endpoints**: Exposes RESTful endpoints for products and categories.
 
-- [Node.js](https://nodejs.org/)
-- [Python](https://www.python.org/)
-- [Docker](https://www.docker.com/)
+## Installation
 
-## Getting Started
+### Backend
 
-1. Clone the repository:
+1. Install Python 3.10 (recommended version).
+2. Set up the virtual environment and install dependencies:
+   ```bash
+   make backend-install
+   ```
 
-    ```bash
-    git clone https://github.com/your-username/your-repository.git
-    cd your-repository
-    ```
+### Frontend
+![Frontend preview](./static/preview.png)
 
-2. Create a virtual environment:
+1. Navigate to the frontend directory:
+   ```bash
+   cd frontend
+   ```
 
-    ```bash
-    make virtualenv
-    ```
+2. Install frontend dependencies:
+   ```bash
+   npm install
+   ```
 
-3. Install dependencies:
+## Running the Application
 
-    ```bash
-    make dev-dependencies
-    ```
+To start the backend:
 
-4. Run the database using Docker:
+```bash
+make backend-start
+```
 
-    ```bash
-    make run-database
-    ```
+To start the frontend:
 
-5. Run the backend server:
+```bash
+make frontend-start
+```
 
-    ```bash
-    make run-server
-    ```
+To start the application with Hypercorn (production server):
 
-6. Run the Next.js frontend:
+```bash
+make hypercorn-start
+```
 
-    ```bash
-    make run-frontend
-    ```
+### Database Setup
 
-Visit [http://localhost:3000](http://localhost:3000) in your browser to see the application.
+1. Start the database (Docker or Podman recommended):
+   ```bash
+   make database-start
+   ```
 
-## Makefile Commands
+2. Run migrations (if any):
+   ```bash
+   make db-migrate
+   ```
 
-- **virtualenv**: Creates a virtual environment for the Python backend.
-- **dev-dependencies**: Installs dependencies for the development environment.
-- **run-database**: Starts the database using Docker.
-- **run-server**: Runs the backend server.
-- **run-frontend**: Runs the Next.js frontend in development mode.
+3. To create a new migration file:
+   ```bash
+   make db-migration NAME="migration_name"
+   ```
 
-## Project Structure
+## Configuration
 
-- **frontend**: Contains the Next.js frontend code.
-- **server**: Contains the backend code.
-- **docker**: Contains Docker configurations, including the database setup.
+This project uses **Quart** for the web framework and **SQLAlchemy** for ORM, with **Marshmallow** for serialization. Database and other configurations are loaded from environment variables and configuration files.
 
-## Additional Notes
+## Structure
 
-- Customize the database configuration in `docker/database/docker-compose.yml` as needed.
-- Adjust the project structure and code based on your requirements.
+- **Backend**: Contains all backend logic, including models, controllers, and database migrations.
+- **Frontend**: Holds the frontend assets, including React components (if applicable).
+- **Docker**: For containerization of the app and database.
 
-Feel free to contribute, report issues, or provide feedback. Happy coding!
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.

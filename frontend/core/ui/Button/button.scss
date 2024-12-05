@@ -1,0 +1,19 @@
+button {
+  cursor: pointer;
+  border: none;
+  outline: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1rem;
+
+  &.transparent {
+    background-color: transparent;
+
+    &:hover,
+    &:focus {
+      transition: background-color 100ms linear;
+      background-color: rgba($color: #000000, $alpha: 0.2);
+    }
+  }
+}

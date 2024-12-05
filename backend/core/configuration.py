@@ -1,62 +1,90 @@
 from importlib import import_module
-import toml
-import pathlib
+from pathlib import Path
 from dotenv import dotenv_values
+import toml
 import os
 
 
-class Settings():
+class Settings:
     def __init__(self):
-        self.quart_app = str(os.environ["QUART_APP"]).replace(
-            "/app:create_app", "")
-        self.app_path = f"{str(pathlib.Path().resolve())}/{self.quart_app}"
-        self.app_name = str(self.quart_app).split('/')[-1]
-        self.env = self.__load_environment()
-        self.extensions = self.__load_extensions()
+        self.quart_app = os.getenv("QUART_APP", "app:create_app")
+        self.app_name = self._set_app_name()
+        self.env = self._load_environment()
+        self.extensions = self._load_extensions()
 
-    def __load_environment(self):
-        """
-        Load environment variables from .env file
-        """
-        if (os.path.isfile(self.app_path + "/../.env")):
-            return {
-                **dotenv_values(self.app_path + "/../.env")
-            }
-        else:
-            return "{}"
+    def _set_app_name(self):
+        """Determine the app name using the QUART_APP variable."""
+        splited_path = self.quart_app.split("app:create_app")
+        if len(splited_path) > 1:
+            return splited_path[0].strip("/")
+        return Path().resolve().name
 
-    def __load_extensions(self):
+    def _load_environment(self):
         """
-        Loads all extensions from the extensions folder
+        Load environment variables from system or .env file.
+        System variables take precedence over .env values.
         """
-        return toml.load(f'{self.app_path}/config/app.toml')['EXTENSIONS']
+        # Load from system environment
+        required_keys = [
+            "DB_CONNECTION",
+            "POSTGRES_USER",
+            "POSTGRES_PASSWORD",
+            "DB_HOST",
+            "DB_PORT",
+            "POSTGRES_DB",
+        ]
+        env = {key: os.getenv(key) for key in required_keys}
+
+        # If any key is missing, load from .env file
+        if None in env.values():
+            env_path = Path(self.app_name).parent / ".env"
+            if env_path.is_file():
+                env.update(dotenv_values(env_path))
+            else:
+                raise FileNotFoundError(
+                    ".env file not found and environment variables are incomplete."
+                )
+
+        return env
+
+    def _load_extensions(self):
+        """Load extensions defined in the TOML configuration file."""
+        config_path = Path(self.app_name) / "config" / "app.toml"
+        if config_path.is_file():
+            return toml.load(config_path).get("EXTENSIONS", [])
+        raise FileNotFoundError(f"Configuration file not found: {config_path}")
 
 
 def load_extensions(app):
     """
-    Load extensions from file
+    Dynamically load and initialize extensions defined in the configurations.
+
+    Args:
+        app: The Quart application instance.
     """
     settings = Settings()
-    extensions = settings.extensions
-    for extension in extensions:
-        # Split data in form `extension.path:factory_function`
-        module_name, factory = extension.split(":")
-        # Dynamically import extension module.
-        ext = import_module(settings.app_name + "." + module_name)
-        # Invoke factory passing app.
-        getattr(ext, factory)(app)
+    for extension in settings.extensions:
+        try:
+            module_name, factory = extension.split(":")
+            ext = import_module(f"{settings.app_name}.{module_name}")
+            getattr(ext, factory)(app)
+        except Exception as e:
+            raise ImportError(f"Failed to load extension '{extension}': {e}")
 
 
 def load_database():
     """
-    Load the database settings
-    """
-    settings = Settings().env
+    Construct the database connection string.
 
-    db_connection = settings["DB_CONNECTION"]
-    db_username = settings["POSTGRES_USER"]
-    db_password = settings["POSTGRES_PASSWORD"]
-    db_host = settings["DB_HOST"]
-    db_port = settings["DB_PORT"]
-    db_name = settings["POSTGRES_DB"]
-    return f"{db_connection}://{db_username}:{db_password}@{db_host}:{db_port}/{db_name}"
+    Returns:
+        A string representing the database connection URL.
+    """
+    env = Settings().env
+    try:
+        return (
+            f"{env['DB_CONNECTION']}://{env['POSTGRES_USER']}:"
+            f"{env['POSTGRES_PASSWORD']}@{env['DB_HOST']}:"
+            f"{env['DB_PORT']}/{env['POSTGRES_DB']}"
+        )
+    except KeyError as e:
+        raise KeyError(f"Missing database configuration key: {e}")
